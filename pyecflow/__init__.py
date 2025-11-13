@@ -40,5 +40,6 @@ except ImportError:  # pragma: no cover
 
 from .workflow_task import WorkflowTask
 from .workflow_anchorfamily import WorkflowAnchorFamily
+from .generate_suite import generate_suite
 
-__all__ = ["read_package_file", "WorkflowTask", "WorkflowAnchorFamily", "__version__"]
+__all__ = ["__version__", "read_package_file", "WorkflowTask", "WorkflowAnchorFamily", "generate_suite"]

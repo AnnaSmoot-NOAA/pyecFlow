@@ -5,16 +5,15 @@
 import sys
 import os
 import pyflow as pf
-
-from pyecflow import read_package_file, WorkflowTask, WorkflowAnchorFamily
+from pyecflow import read_package_file, WorkflowTask, WorkflowAnchorFamily, generate_suite
 #from header import FileHeader, FileTail, InlineCodeHeader
 
 scratchdir = os.path.join(os.path.abspath(''), 'scratch')
-filesdir = os.path.join(scratchdir, 'files')
-outdir = os.path.join(scratchdir, 'out')
+#filesdir = os.path.join(scratchdir, 'files')
+#outdir = os.path.join(scratchdir, 'out')
 
-if not os.path.exists(outdir):
-    os.makedirs(outdir, exist_ok=True)
+#if not os.path.exists(outdir):
+#    os.makedirs(outdir, exist_ok=True)
     
 server_host = 'localhost'
 server_port = 22921 #Anna's personal Ursa EcFlow server port
@@ -35,10 +34,13 @@ class WorkflowAnchorFamily(pf.AnchorFamily):
         self.task_triggers = task_triggers
 """
 class TestSuiteBuilder:
+    #def __init__(self, filesdir, outdir, number=100):
+    #    with pf.Suite('testSuite', host=pf.LocalHost('localhost'),
+    #                  files=os.path.join(filesdir, 'testSuite', 'scripts'),
+    #                   home=outdir, NUMBER=number) as s: #remove NUMBER?
     def __init__(self, filesdir, outdir, number=100):
         with pf.Suite('testSuite', host=pf.LocalHost('localhost'),
-                      files=os.path.join(filesdir, 'testSuite', 'scripts'),
-                      home=outdir, NUMBER=number) as s: #remove NUMBER?
+                      NUMBER=number) as s: #remove NUMBER?
 
             # Create family_A as parent family
             with pf.AnchorFamily('A'):
@@ -80,11 +82,12 @@ class TestSuiteBuilder:
                 tB1 = WorkflowTask('B1', tB1c) #this will be py ecflow. context is a dict
 
         self.s = s
-        self.s.check_definition()
-        self.s.deploy_suite()
-        print(self.s)
-        print(s)
-        print('hello2')
+        #self.s.check_definition()
+        #self.s.deploy_suite()
+        #print(self.s)
+        #print(s)
+        
+
         """
         # Create def directory
         def_dir = os.path.join(filesdir, 'testSuite', 'def')
