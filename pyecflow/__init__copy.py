@@ -37,8 +37,3 @@ try:
 except ImportError:  # pragma: no cover
     # Local copy or not installed with setuptools
     __version__ = ""
-
-from .workflow_task import WorkflowTask
-from .workflow_anchorfamily import WorkflowAnchorFamily
-
-__all__ = ["read_package_file", "WorkflowTask", "WorkflowAnchorFamily", "__version__"]
